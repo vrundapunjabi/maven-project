@@ -21,6 +21,8 @@ pipeline {
             post {
                 success {
                     junit '**/target/surefire-reports/*.xml' 
+                    archiveArtifacts '**/*.war'
+                    checkstyle canComputeNew: false, defaultEncoding: '', healthy: '', pattern: '', unHealthy: ''
                 }
             }
         }
