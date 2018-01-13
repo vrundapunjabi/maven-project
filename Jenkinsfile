@@ -29,7 +29,7 @@ pipeline {
 
          stage ('Deploy to Staging'){
             steps {
-                build job: 'deploy-maven-project-ude'
+                build job: 'deploy-to-staging'
             }
         }
 
@@ -39,7 +39,7 @@ pipeline {
                     input message:'Approve PRODUCTION Deployment?'
                 }
 
-                build job: 'Deploy-to-Prod'
+                build job: 'deploy-to-production'
             }
             post {
                 success {
