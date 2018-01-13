@@ -16,7 +16,12 @@ pipeline {
 
         stage ('Build') {
             steps {
-                echo 'This is a minimal pipeline.'
+                sh 'mvn clean package checkstyle:checkstyle'
+            }
+            post {
+                success {
+                    junit '**/target/surefire-reports/*.xml' 
+                }
             }
         }
     }
