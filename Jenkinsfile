@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     parameters {
-            string(defaultValue: '52.66.187.150', description: 'staging server', name: 'tomcat_dev') 
+            string(defaultValue: '13.127.54.20', description: 'staging server', name: 'tomcat_dev') 
         }
 
     triggers {
@@ -41,7 +41,7 @@ pipeline {
 
         stage ('Deploy to Staging'){
             steps{
-                sh "scp -i /var/lib/jenkins/hemali.pem **/target/*.war ubuntu@${params.tomcat_dev}:/root/demo/tomcat-staging/webapps"
+                sh "scp -i /var/lib/jenkins/jenkins.pem **/target/*.war ubuntu@${params.tomcat_dev}:/home/ubuntu/tomcat-staging/webapps"
             }
         }
     }
