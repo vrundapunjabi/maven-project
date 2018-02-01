@@ -14,7 +14,13 @@ pipeline {
             }
         }
 
-        properties([parameters([string(defaultValue: '52.66.187.150', description: 'staging server', name: 'tomcat_dev'), string(defaultValue: '2.2.2.2', description: 'production server', name: 'tomcat_prod')])]),pipelineTriggers([pollSCM('* * * * *')])])
+        parameters{
+            string(defaultValue: '52.66.187.150', description: 'staging server', name: 'tomcat_dev') 
+            string(defaultValue: '2.2.2.2', description: 'production server', name: 'tomcat_prod')
+        }
+        triggers{
+            pollSCM('* * * * *')
+        }
 
 
         stage ('Build') {
