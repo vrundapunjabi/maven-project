@@ -1,5 +1,14 @@
 pipeline {
     agent any
+
+    parameters {
+            string(defaultValue: '52.66.187.150', description: 'staging server', name: 'tomcat_dev') 
+        }
+
+    triggers {
+           pollSCM('* * * * *')
+    }
+
     tools { 
         maven 'maven3' 
         jdk 'java8' 
@@ -13,15 +22,6 @@ pipeline {
                 ''' 
             }
         }
-
-        parameters {
-            string(defaultValue: '52.66.187.150', description: 'staging server', name: 'tomcat_dev') 
-        }
-
-        triggers {
-            pollSCM('* * * * *')
-        }
-
 
         stage ('Build') {
             steps {
