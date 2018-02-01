@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     parameters {
-            string(defaultValue: '13.127.54.20', description: 'staging server', name: 'tomcat_dev') 
+            string(defaultValue: '172.31.20.6', description: 'staging server', name: 'tomcat_dev') 
         }
 
     triggers {
