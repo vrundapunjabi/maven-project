@@ -30,9 +30,22 @@ pipeline {
             }
         }
 
-         stage ('Deploy to Staging'){
-            steps {
+        stage ('Deploy to Staging'){
+            steps{
+                timeout(2){
+                    input message:'Approve PRODUCTION Deployment?'
+                }
+
                 build job: 'deploy-to-staging'
+            }
+            post {
+                success {
+                    echo 'Code deployed to Staging.'
+                }
+
+                failure {
+                    echo ' Deployment failed.'
+                }
             }
         }
     }
