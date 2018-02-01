@@ -33,7 +33,7 @@ pipeline {
         stage ('Deploy to Staging'){
             steps{
                 timeout(2){
-                    input:'Approve PRODUCTION Deployment?'
+                    input message:'Approve PRODUCTION Deployment?'
                 }
 
                 build job: 'deploy-to-staging'
