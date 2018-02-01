@@ -14,6 +14,10 @@ pipeline {
             }
         }
 
+        properties([parameters([string(defaultValue: '52.66.187.150', description: 'staging server', name: 'tomcat_dev'), string(defaultValue: '2.2.2.2', description: 'production server', name: 'tomcat_prod')])])
+
+        Triggers([pollSCM('* * * * *')])])
+
         stage ('Build') {
             steps {
                 sh 'mvn clean package checkstyle:checkstyle'
@@ -32,20 +36,7 @@ pipeline {
 
         stage ('Deploy to Staging'){
             steps{
-                timeout(2){
-                    input message:'Approve PRODUCTION Deployment?'
-                }
-
-                build job: 'deploy-to-staging'
-            }
-            post {
-                success {
-                    echo 'Code deployed to Staging.'
-                }
-
-                failure {
-                    echo ' Deployment failed.'
-                }
+                sh "scp -i /var/lib/jenkins/hemali.pem **/target/*.war ubuntu@${params.tomcat_dev}:/root/demo/tomcat-staging/webapps"
             }
         }
     }
