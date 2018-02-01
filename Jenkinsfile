@@ -20,8 +20,11 @@ pipeline {
             }
             post {
                 success {
+                    echo "Executing junit report"
                     junit '**/target/surefire-reports/*.xml' 
+                    echo "Now Archiving Artifacts"
                     archiveArtifacts '**/*.war'
+                    echo "Executing Checkstyle Report"
                     checkstyle canComputeNew: false, defaultEncoding: '', healthy: '', pattern: '', unHealthy: ''
                 }
             }
