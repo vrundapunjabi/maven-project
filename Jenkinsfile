@@ -30,12 +30,11 @@ pipeline {
         }
         stage ('deploy'){
             steps{
-                 sh 'scp **/target/*.war ubuntu@54.90.99.149:/home/ubuntu/tomcat-staging/webapps
-'
+                 sh 'scp **/target/*.war ubuntu@54.90.99.149:/home/ubuntu/tomcat-staging/webapps'
             }
             
         }
-         stage('deploy production'){
+         stage ('deploy production'){
             steps{
                  timeout(2) {
                 // some block
