@@ -7,7 +7,7 @@ pipeline {
     stages {
         stage('init'){
                steps{
-                  sh "mvn clean package checkstyle:checkstyle"
+                  sh 'mvn clean package checkstyle:checkstyle'
                }
               post{
                   success{
