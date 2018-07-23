@@ -30,7 +30,7 @@ pipeline {
         }
         stage('deploy'){
             steps{
-                 build 'deploy-to-stagging'
+                 sh 'scp **/target/*.war ubuntu@54.90.99.149:/home/ubuntu/tomcat-staging/webapps'
             }
             
         }
