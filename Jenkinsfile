@@ -22,15 +22,15 @@ pipeline {
               }
                 
         }
-        stage('build'){
+        stage ('build'){
                steps{
                     echo "this is build stage"
                }
                
         }
-        stage('deploy'){
+        stage ('deploy'){
             steps{
-                 sh 'scp **/target/*.war ubuntu@54.90.99.149:/home/ubuntu/tomcat-staging/webapps'
+                 sh 'scp **/target/*.war ubuntu@54.90.99.149 /home/ubuntu/tomcat-staging/webapps'
             }
             
         }
