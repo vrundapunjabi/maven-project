@@ -36,8 +36,10 @@ pipeline {
         }
          stage('deploy production'){
             steps{
-                 timeout(2) 
-                 echo "DO you want to deploy"
+                 timeout(2){
+                  echo "DO you want to deploy"
+                 } 
+                
             }
     } 
 
