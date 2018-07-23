@@ -24,13 +24,13 @@ pipeline {
         }
         stage('build'){
                steps{
-                    echo "This is build stage"
+                    echo "this is build stage"
                }
                
         }
         stage('deploy'){
             steps{
-                 echo "This is deploy stage"
+                 build 'deploy-to-stagging'
             }
             
         }
