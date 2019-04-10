@@ -5,7 +5,8 @@ pipeline {
         maven 'maven'
     }   
     stages {
-        stage('init'){
+        stage('init')
+        {
                steps{
                   sh 'mvn clean package checkstyle:checkstyle'
                }
